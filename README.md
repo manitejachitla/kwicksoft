@@ -9,6 +9,8 @@ yarn test - to run test cases
 
 # Test cases code
 
+//snapshot can be found in 'src/modules/Dashboard/test/_snapshots_'
+
 import Dashboard from '../Dashboard';
 import { create } from 'react-test-renderer'
 
