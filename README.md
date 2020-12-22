@@ -2,69 +2,37 @@
 
 live-demo: [https://realchat-bcb08.web.app/](https://realchat-bcb08.web.app/)
 
-## Available Scripts
+commands:
+yarn start  -- to start development server
+yarn build -- to create a production build
+yarn test - to run test cases
 
-In the project directory, you can run:
+# Test cases code
 
-### `npm start`
+import Dashboard from '../Dashboard';
+import { create } from 'react-test-renderer'
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+const todoProps = {
+  todoStatus: [{ id: 1, title: 'test1', description: 'description1', status: 1, assignee: 'test1' }],
+  inProgressStatus: [{ id: 2, title: 'test2', description: 'description2', status: 2, assignee: 'test2' }],
+  inQAStatus: [{ id: 3, title: 'test3', description: 'description3', status: 3, assignee: 'test3' }],
+  doneStatus: [{ id: 4, title: 'test4', description: 'description4', status: 4, assignee: 'test4' }],
+  blockedStatus: [{ id: 5, title: 'test5', description: 'description5', status: 5, assignee: 'test5' }],
+  deployedStatus: [{ id: 6, title: 'test6', description: 'description6', status: 6, assignee: 'test6' }],
+  setCreateTodoModal: jest.fn()
+}
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+describe('ActivityDetails component', () => {
+  test('Matches the snapshot', () => {
+    const DashboardComponent = create(
+      <Dashboard {...todoProps} />
+    )
+    expect(DashboardComponent.toJSON()).toMatchSnapshot()
+  })
+})
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
